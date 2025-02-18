@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://cy6ogc0ywpnga"]
+
+[ext_resource type="Texture2D" uid="uid://dl8snv0dgnpkn" path="res://images/paw.png" id="1_kflxp"]
+[ext_resource type="Script" path="res://scenes/objects/spawner.gd" id="1_p4y4s"]
+[ext_resource type="PackedScene" uid="uid://c3enwiffuabpt" path="res://scenes/objects/brush.tscn" id="2_k886r"]
+[ext_resource type="PackedScene" uid="uid://bxhe1vfxcatpw" path="res://scenes/objects/box.tscn" id="2_w8bmo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qfjd5"]
+size = Vector2(140, 140)
+
+[node name="Spawner" type="Area2D"]
+script = ExtResource("1_p4y4s")
+scenes = Array[PackedScene]([ExtResource("2_w8bmo"), ExtResource("2_k886r")])
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_kflxp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_qfjd5")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
