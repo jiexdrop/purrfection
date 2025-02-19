@@ -5,7 +5,21 @@ extends Area2D
 func _on_timer_timeout() -> void:
 	if scenes.is_empty():
 		return
-	create(scenes[randi() % scenes.size()])
+	
+	var weights = [0.75, 0.25, 0.05]  # Adjust probabilities
+	var index = weighted_random_index(weights)
+	create(scenes[index])
+
+func weighted_random_index(weights: Array) -> int:
+	var r = randf()
+	var cumulative = 0.0
+	
+	for i in range(weights.size()):
+		cumulative += weights[i]
+		if r < cumulative:
+			return i
+	
+	return weights.size() - 1  # Fallback
 
 func create(scene: PackedScene):
 	var instance = scene.instantiate()

@@ -12,6 +12,6 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if body.name == "Ball":
-		SignalBus.brush.emit(true)
+	if body.is_in_group("Ball"):
+		SignalBus.brush = true
 		queue_free()

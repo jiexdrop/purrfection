@@ -16,7 +16,10 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node) -> void:
 	#print("Collision detected with: ", body.name)  # Debug print
-	if body.name == "Ball" and can_hit:
+	if body.is_in_group("Ball") and can_hit:
+		if SignalBus.brush:
+			right = true
+			SignalBus.brush = false
 		can_hit = false
 		hits += 1
 		hit_timer.start()
