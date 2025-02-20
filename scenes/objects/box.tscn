@@ -6,12 +6,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qfjd5"]
 size = Vector2(127, 108)
 
-[node name="Box" type="RigidBody2D"]
-position = Vector2(941, 369)
+[node name="Box" type="RigidBody2D" groups=["Box"]]
 gravity_scale = 0.0
 script = ExtResource("1_v8o5c")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_gg5r1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -19,7 +18,7 @@ position = Vector2(4.5, 4)
 shape = SubResource("RectangleShape2D_qfjd5")
 
 [node name="RemovalTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 0.5
 one_shot = true
 
 [node name="HitTimer" type="Timer" parent="."]

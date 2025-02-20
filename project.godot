@@ -17,11 +17,13 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+Global="*res://scripts/global.gd"
 SignalBus="*res://scripts/signal_bus.gd"
 
 [global_group]
 
 Ball=""
+Box=""
 
 [rendering]
 

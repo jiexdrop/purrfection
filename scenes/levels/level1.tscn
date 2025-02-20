@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cy5unw0mdkpq3"]
+[gd_scene load_steps=19 format=3 uid="uid://cy5unw0mdkpq3"]
 
 [ext_resource type="Script" path="res://scenes/levels/level_1.gd" id="1_rhja8"]
 [ext_resource type="Script" path="res://scenes/levels/character.gd" id="2_aewes"]
@@ -23,21 +23,25 @@ radius = 73.0274
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w8ldn"]
 size = Vector2(1356, 48.25)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uyxs8"]
+size = Vector2(107, 685.563)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sbmtq"]
-size = Vector2(111, 685.563)
+size = Vector2(299, 685.563)
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_rhja8")
 box_scene = ExtResource("4_p52dg")
+spawn_width = 984.0
 
 [node name="Paw" type="Area2D" parent="."]
-position = Vector2(997, 114)
+position = Vector2(1055, 63)
 
 [node name="Sprite2D" type="Sprite2D" parent="Paw"]
 texture = ExtResource("4_6tub0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Paw"]
-position = Vector2(0, -1)
+position = Vector2(6, -1)
 shape = SubResource("RectangleShape2D_qfjd5")
 
 [node name="Ball" parent="." instance=ExtResource("4_bobhk")]
@@ -69,28 +73,59 @@ shape = SubResource("RectangleShape2D_w8ldn")
 position = Vector2(405, 723)
 shape = SubResource("RectangleShape2D_w8ldn")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-256, 382.219)
-shape = SubResource("RectangleShape2D_sbmtq")
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-254.5, 382.219)
+shape = SubResource("RectangleShape2D_uyxs8")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1007, 382)
+position = Vector2(932.5, 382)
 shape = SubResource("RectangleShape2D_sbmtq")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
-anchors_preset = 9
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 167.0
+grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 0
+[node name="Control" type="Control" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = 35.0
+offset_right = -75.0
+offset_bottom = 35.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
 
-[node name="Thermometer_R" type="TextureProgressBar" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -132.5
+offset_top = -343.75
+offset_right = 107.5
+offset_bottom = 391.25
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = -1
+alignment = 2
+
+[node name="Thermometer_R" type="TextureProgressBar" parent="CanvasLayer/Control/Control/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 allow_greater = true
 allow_lesser = true
 fill_mode = 3
@@ -100,7 +135,8 @@ texture_progress = ExtResource("10_ks0c5")
 script = ExtResource("11_m5gww")
 right = true
 
-[node name="Thermometer_W" type="TextureProgressBar" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+[node name="Thermometer_W" type="TextureProgressBar" parent="CanvasLayer/Control/Control/VBoxContainer"]
+clip_contents = true
 layout_mode = 2
 allow_greater = true
 allow_lesser = true
