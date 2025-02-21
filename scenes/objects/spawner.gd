@@ -29,6 +29,8 @@ func _on_timer_timeout() -> void:
 	var weights = [0.50, 0.40, 0.05]  # Adjust probabilities
 	#var weights = [0.50, 0.0, 0.50] # Bombs
 	var index = weighted_random_index(weights)
+	if Global.boxes >= 3:
+		weights = [0.15, 0.25, 0.5]  # Adjust probabilities
 	if Global.bombs >= 2:
 		index = 0
 	if spawn:

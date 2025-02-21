@@ -24,6 +24,7 @@ func _ready() -> void:
 	contact_monitor = true
 	max_contacts_reported = 4
 	sprite.texture = box_textures[0]
+	Global.boxes += 1 
 
 func spawn_break_pieces():
 	# Create left piece
@@ -102,6 +103,7 @@ func kill(hits):
 	self.remove_from_group("Box")
 
 func _on_removal_timer_timeout() -> void:
+	Global.boxes -= 1
 	queue_free()
 
 func _on_hit_timer_timeout() -> void:
