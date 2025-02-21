@@ -25,7 +25,7 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	if not being_collected:  # Only check collisions if not already being collected
 		for body in get_colliding_bodies():
-			if body.is_in_group("Character"):
+			if body.is_in_group("Ball") or body.is_in_group("Character"):
 				collect()
 
 func collect() -> void:

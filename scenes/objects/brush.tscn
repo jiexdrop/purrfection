@@ -10,6 +10,9 @@ size = Vector2(53.8961, 21)
 radius = 40.0125
 
 [node name="Brush" type="RigidBody2D"]
+lock_rotation = true
+freeze = true
+freeze_mode = 1
 script = ExtResource("1_v4dm5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

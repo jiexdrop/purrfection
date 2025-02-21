@@ -8,7 +8,7 @@ extends Node2D
 var spawn_timer: float = 0.0
 
 # Add these variables for collision checking
-@export var check_radius: float = 32.0  # Adjust based on your needs
+@export var check_radius: float = 80.0  # Adjust based on your needs
 var collision_shape: CollisionShape2D
 
 func _ready():
@@ -64,4 +64,5 @@ func spawn_random_box():
 		add_child(spawner)
 		
 func _draw():
-	draw_rect(Rect2(Vector2.ZERO, Vector2(spawn_width, spawn_height)), Color.WHITE, false)
+	#draw_rect(Rect2(Vector2.ZERO, Vector2(spawn_width, spawn_height)), Color.WHITE, false)
+	pass

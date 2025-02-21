@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7aj8dbkfqvg"]
+
+[ext_resource type="Script" path="res://scenes/objects/bomb.gd" id="1_lhdnr"]
+[ext_resource type="Texture2D" uid="uid://bslb2n1uxpcm6" path="res://images/bomb.png" id="2_0r25u"]
+[ext_resource type="PackedScene" uid="uid://cqqaj5q63707" path="res://scenes/objects/explosion.tscn" id="2_f0je3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n3vl5"]
+radius = 47.0425
+
+[node name="Bomb" type="RigidBody2D"]
+gravity_scale = 0.0
+lock_rotation = true
+freeze_mode = 1
+script = ExtResource("1_lhdnr")
+explosion_effect_scene = ExtResource("2_f0je3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_0r25u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 11)
+shape = SubResource("CircleShape2D_n3vl5")

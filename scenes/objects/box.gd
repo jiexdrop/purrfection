@@ -19,7 +19,8 @@ var can_hit = true
 
 func _ready() -> void:
 	randomize()
-	right = randi() % 2 == 0 
+	right = randi() % 2 == 0
+	right = false 
 	contact_monitor = true
 	max_contacts_reported = 4
 	sprite.texture = box_textures[0]
@@ -68,22 +69,12 @@ func _on_body_entered(body: Node) -> void:
 		hits += 1
 		hit_timer.start()
 		
-		if Global.brush > 0:
+		if Global.brush > 0 and right == false:
 			right = true
 			Global.brush -= 1
 			
 		if hits >= 3:
-			if right:
-				SignalBus.update_right.emit(5)
-				SignalBus.update_wrong.emit(-5)
-			else:
-				SignalBus.update_wrong.emit(5)
-				SignalBus.update_right.emit(-5)
-			
-			# Spawn break pieces and hide original sprite
-			spawn_break_pieces()
-			sprite.visible = false
-			removal_timer.start()
+			kill(0)
 		else:
 			# Update sprite texture based on hits
 			var texture_index = min(hits, box_textures.size() - 1)
@@ -94,6 +85,21 @@ func _on_body_entered(body: Node) -> void:
 				modulate = Color(1 - hits * 0.3, 1, 1 - hits * 0.3)
 			else:
 				modulate = Color(1, 1 - hits * 0.3, 1 - hits * 0.3)
+
+func kill(hits):
+	self.hits += hits
+	if right:
+		SignalBus.update_right.emit(5)
+		SignalBus.update_wrong.emit(-5)
+	else:
+		SignalBus.update_wrong.emit(5)
+		SignalBus.update_right.emit(-5)
+	
+	# Spawn break pieces and hide original sprite
+	spawn_break_pieces()
+	sprite.visible = false
+	removal_timer.start()
+	self.remove_from_group("Box")
 
 func _on_removal_timer_timeout() -> void:
 	queue_free()

@@ -30,3 +30,4 @@ Character=""
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.545098, 0.368627, 0.235294, 1)
