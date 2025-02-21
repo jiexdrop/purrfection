@@ -7,6 +7,7 @@
 size = Vector2(127, 108)
 
 [node name="Box" type="RigidBody2D" groups=["Box"]]
+mass = 10.0
 gravity_scale = 0.0
 script = ExtResource("1_v8o5c")
 

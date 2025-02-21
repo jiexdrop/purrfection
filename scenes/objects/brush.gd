@@ -1,18 +1,37 @@
-extends Area2D
+extends RigidBody2D
 
+var being_collected = false
+var float_speed = 100
+var fade_speed = 2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
+	contact_monitor = true
+	max_contacts_reported = 4
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if being_collected:
+		# Move upward
+		position.y -= float_speed * delta
+		
+		# Fade out
+		modulate.a -= fade_speed * delta
+		
+		# Once fully transparent, remove the node
+		if modulate.a <= 0:
+			queue_free()
 
+func _physics_process(delta: float) -> void:
+	if not being_collected:  # Only check collisions if not already being collected
+		for body in get_colliding_bodies():
+			if body.is_in_group("Character"):
+				collect()
 
-func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Ball"):
-		SignalBus.brush.emit(true)
-		Global.brush = true
-		queue_free()
+func collect() -> void:
+	being_collected = true
+	Global.brush += 1
+	# Disable physics while animating
+	freeze = true
+	collision_layer = 0
+	collision_mask = 0

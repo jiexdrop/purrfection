@@ -1,19 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://c3enwiffuabpt"]
+[gd_scene load_steps=5 format=3 uid="uid://c3enwiffuabpt"]
 
 [ext_resource type="Texture2D" uid="uid://csq6d6lpbdt8e" path="res://images/brush.png" id="1_qmkok"]
 [ext_resource type="Script" path="res://scenes/objects/brush.gd" id="1_v4dm5"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qfjd5"]
-size = Vector2(140, 140)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_quj0b"]
+size = Vector2(53.8961, 21)
 
-[node name="Brush" type="Area2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_n3vl5"]
+radius = 40.0125
+
+[node name="Brush" type="RigidBody2D"]
 script = ExtResource("1_v4dm5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_qmkok")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
-shape = SubResource("RectangleShape2D_qfjd5")
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(31.2187, -31.7022)
+rotation = -0.709793
+shape = SubResource("RectangleShape2D_quj0b")
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-15, 11)
+shape = SubResource("CircleShape2D_n3vl5")

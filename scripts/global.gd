@@ -1,3 +1,3 @@
 extends Node
 
-var brush = false
+var brush = 0

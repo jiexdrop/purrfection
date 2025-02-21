@@ -68,8 +68,9 @@ func _on_body_entered(body: Node) -> void:
 		hits += 1
 		hit_timer.start()
 		
-		if Global.brush:
+		if Global.brush > 0:
 			right = true
+			Global.brush -= 1
 			
 		if hits >= 3:
 			if right:

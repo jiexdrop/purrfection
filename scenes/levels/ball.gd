@@ -18,10 +18,9 @@ func _ready():
 	physics_material_override.friction = 0.2
 	contact_monitor = true
 	max_contacts_reported = 4
-	SignalBus.brush.connect(_brush)
 	
-func _brush(val):
-	if val:
+func _process(delta: float) -> void:
+	if Global.brush > 0:
 		sprite.texture = paint_texture
 	else:
 		sprite.texture = original_texture
@@ -29,7 +28,6 @@ func _brush(val):
 func _physics_process(delta):
 	# Check if the ball is moving too slowly (potentially stuck)
 	if linear_velocity.length() < min_velocity and linear_velocity.length() > 0:
-		# Add a random impulse to unstick
 		var random_angle = randf_range(0, 2 * PI)
 		var unstick_impulse = Vector2(cos(random_angle), sin(random_angle)) * unstick_force
 		apply_central_impulse(unstick_impulse)
@@ -40,10 +38,8 @@ func _physics_process(delta):
 	
 	# Add some fun effects on collision
 	for body in get_colliding_bodies():
-		if body.is_in_group("Box"):
-			SignalBus.brush.emit(false)
-			Global.brush = false
-		if body:
+		# Check if the body is still valid (not being freed)
+		if is_instance_valid(body) and not body.is_queued_for_deletion():
 			# Increase velocity on bounce
 			linear_velocity *= bounce_factor
 			
