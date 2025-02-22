@@ -16,6 +16,7 @@ var break_texture_right = preload("res://images/box_break_right.png")
 var hits := 0
 var right = false
 var can_hit = true
+var is_destroyed := false
 
 func _ready() -> void:
 	randomize()
@@ -88,6 +89,11 @@ func _on_body_entered(body: Node) -> void:
 				modulate = Color(1, 1 - hits * 0.3, 1 - hits * 0.3)
 
 func kill(hits):
+	# Prevent multiple destructions
+	if is_destroyed:
+		return
+	is_destroyed = true
+	
 	self.hits += hits
 	if right:
 		SignalBus.update_right.emit(5)
@@ -100,7 +106,6 @@ func kill(hits):
 	spawn_break_pieces()
 	sprite.visible = false
 	removal_timer.start()
-	self.remove_from_group("Box")
 
 func _on_removal_timer_timeout() -> void:
 	Global.boxes -= 1
