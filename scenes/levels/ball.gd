@@ -20,7 +20,7 @@ func _ready():
 	max_contacts_reported = 4
 	
 func _process(delta: float) -> void:
-	if Global.brush > 0:
+	if Global.collected_brushes > 0:
 		sprite.texture = paint_texture
 	else:
 		sprite.texture = original_texture

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cy5unw0mdkpq3"]
+[gd_scene load_steps=23 format=3 uid="uid://cy5unw0mdkpq3"]
 
 [ext_resource type="Script" path="res://scenes/levels/level_1.gd" id="1_rhja8"]
 [ext_resource type="Script" path="res://scenes/levels/character.gd" id="2_aewes"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bbisa8qo3jwwb" path="res://images/bar_w.png" id="12_0vdrg"]
 [ext_resource type="Texture2D" uid="uid://ces46sxi6qxpg" path="res://images/bar_w_o.png" id="13_e6pml"]
 [ext_resource type="Texture2D" uid="uid://cqqrdamqj1t2l" path="res://images/bar_w_p.png" id="13_m6dc6"]
+[ext_resource type="Script" path="res://scenes/levels/win_panel.gd" id="16_qx7ur"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qfjd5"]
 size = Vector2(140, 140)
@@ -177,4 +178,45 @@ texture_over = ExtResource("13_e6pml")
 texture_progress = ExtResource("13_m6dc6")
 script = ExtResource("11_m5gww")
 
+[node name="WinPanel" type="Panel" parent="CanvasLayer"]
+visible = false
+custom_minimum_size = Vector2(500, 350)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("16_qx7ur")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/WinPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/WinPanel/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/WinPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "You won the game!
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/WinPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "TRY AGAIN"
+
 [connection signal="timeout" from="Character/PawTimer" to="Character" method="_on_paw_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/WinPanel/MarginContainer/VBoxContainer/Button" to="CanvasLayer/WinPanel" method="_on_button_pressed"]

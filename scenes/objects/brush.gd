@@ -8,6 +8,7 @@ var fade_speed = 2
 func _ready() -> void:
 	contact_monitor = true
 	max_contacts_reported = 4
+	Global.brushes += 1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -20,6 +21,7 @@ func _process(delta: float) -> void:
 		
 		# Once fully transparent, remove the node
 		if modulate.a <= 0:
+			Global.brushes -= 1
 			queue_free()
 
 func _physics_process(delta: float) -> void:
@@ -30,7 +32,7 @@ func _physics_process(delta: float) -> void:
 
 func collect() -> void:
 	being_collected = true
-	Global.brush += 1
+	Global.collected_brushes += 1
 	# Disable physics while animating
 	freeze = true
 	collision_layer = 0
