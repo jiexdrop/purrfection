@@ -96,11 +96,9 @@ func kill(hits):
 	
 	self.hits += hits
 	if right:
-		SignalBus.update_right.emit(5)
-		SignalBus.update_wrong.emit(-5)
+		SignalBus.score.emit(5, -5)
 	else:
-		SignalBus.update_wrong.emit(5)
-		SignalBus.update_right.emit(-5)
+		SignalBus.score.emit(-5, 5)
 	
 	# Spawn break pieces and hide original sprite
 	spawn_break_pieces()

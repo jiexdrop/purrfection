@@ -37,3 +37,7 @@ func collect() -> void:
 	freeze = true
 	collision_layer = 0
 	collision_mask = 0
+
+
+func _on_timer_timeout() -> void:
+	queue_free()

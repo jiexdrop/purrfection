@@ -20,6 +20,7 @@ func _ready():
 	var shape = CircleShape2D.new()
 	shape.radius = check_radius
 	collision_shape.shape = shape
+	SignalBus.win.connect(next_level)
 
 func _process(delta):
 	spawn_timer += delta
@@ -66,3 +67,6 @@ func spawn_random_box():
 func _draw():
 	#draw_rect(Rect2(Vector2.ZERO, Vector2(spawn_width, spawn_height)), Color.WHITE, false)
 	pass
+
+func next_level():
+	get_tree().change_scene_to_file("res://scenes/win_scene.tscn") 
