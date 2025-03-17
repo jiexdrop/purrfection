@@ -38,6 +38,3 @@ This project is developed using:
 
 This project is under development by @jiexdrop. All rights reserved unless otherwise specified.
 
-## 🐱 Contact
-
-Project Link: [https://github.com/jiexdrop/purrfection](https://github.com/jiexdrop/purrfection)
