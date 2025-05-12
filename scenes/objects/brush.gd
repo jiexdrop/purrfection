@@ -1,5 +1,6 @@
 extends RigidBody2D
 
+@onready var collect_stream_player: AudioStreamPlayer = $CollectStreamPlayer
 var being_collected = false
 var float_speed = 100
 var fade_speed = 2
@@ -37,6 +38,7 @@ func collect() -> void:
 	freeze = true
 	collision_layer = 0
 	collision_mask = 0
+	collect_stream_player.play()
 
 
 func _on_timer_timeout() -> void:

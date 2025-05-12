@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5r10kabyuywv"]
+[gd_scene load_steps=6 format=3 uid="uid://b5r10kabyuywv"]
 
-[ext_resource type="Script" path="res://scenes/levels/ball.gd" id="1_87aj7"]
+[ext_resource type="Script" uid="uid://cf2isnadf8jqj" path="res://scenes/levels/ball.gd" id="1_87aj7"]
 [ext_resource type="Texture2D" uid="uid://r4fe73q2lv01" path="res://images/knot.png" id="2_072m2"]
+[ext_resource type="AudioStream" uid="uid://bgbbr6xw6tihu" path="res://sounds/ping.mp3" id="3_qscfx"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fhrwx"]
 
@@ -21,3 +22,7 @@ shape = SubResource("CircleShape2D_n27ll")
 position = Vector2(-10, 1)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_072m2")
+
+[node name="HitWallStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_qscfx")
+volume_db = -2.0

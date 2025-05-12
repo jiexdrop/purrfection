@@ -4,6 +4,9 @@ extends RigidBody2D
 @onready var removal_timer: Timer = $RemovalTimer
 @onready var hit_timer: Timer = $HitTimer
 
+@onready var hit_stream_player: AudioStreamPlayer = $HitStreamPlayer
+@onready var break_stream_player: AudioStreamPlayer = $BreakStreamPlayer
+
 var box_textures = [
 	preload("res://images/box2.png"),
 	preload("res://images/box3.png"),
@@ -66,6 +69,8 @@ func spawn_break_pieces():
 	timer.start()
 
 func _on_body_entered(body: Node) -> void:
+	if body.is_in_group("Ball"):
+		hit_stream_player.play()
 	if body.is_in_group("Ball") and can_hit:
 		can_hit = false
 		hits += 1
@@ -75,7 +80,7 @@ func _on_body_entered(body: Node) -> void:
 			right = true
 			Global.collected_brushes -= 1
 			
-		if hits >= 3:
+		if hits >= 1:
 			kill(0)
 		else:
 			# Update sprite texture based on hits
@@ -93,6 +98,8 @@ func kill(hits):
 	if is_destroyed:
 		return
 	is_destroyed = true
+	
+	break_stream_player.play()
 	
 	self.hits += hits
 	if right:

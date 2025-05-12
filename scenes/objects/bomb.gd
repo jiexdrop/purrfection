@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+@onready var explosion_stream_player: AudioStreamPlayer = $ExplosionStreamPlayer
+@onready var sprite_2d: Sprite2D = $Sprite2D
 @export var explosion_radius: float = 150.0
 @export var explosion_force: float = 500.0
 @export var explosion_effect_scene: PackedScene  
@@ -8,6 +10,7 @@ func _ready() -> void:
 	contact_monitor = true
 	max_contacts_reported = 2
 	Global.bombs += 1
+	explosion_stream_player.finished.connect(_on_explosion_finished)
 
 func _physics_process(_delta: float) -> void:
 	var colliding_bodies = get_colliding_bodies()
@@ -43,10 +46,13 @@ func explode() -> void:
 			# Optional: Add destruction animation for boxes
 			body.kill(4)
 	
+	explosion_stream_player.play()
+	sprite_2d.visible = false
+
+func _on_explosion_finished():
 	# Remove the bomb
 	Global.bombs -= 1
 	queue_free()
-
 
 func apply_explosion_force(body: RigidBody2D) -> void:
 	var direction = (body.global_position - global_position).normalized()

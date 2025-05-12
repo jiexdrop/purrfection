@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c87j0xxrvvxii"]
 
-[ext_resource type="Script" path="res://scenes/levels/win_panel.gd" id="1_dy74h"]
+[ext_resource type="Script" uid="uid://od74yytgrixo" path="res://scenes/levels/win_panel.gd" id="1_dy74h"]
 
 [node name="WinPanel" type="Panel"]
 visible = false

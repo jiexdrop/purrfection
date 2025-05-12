@@ -10,6 +10,7 @@ extends RigidBody2D
 var original_texture = preload("res://images/knot.png")
 var paint_texture = preload("res://images/knot_p.png")
 
+@onready var hit_wall_stream_player: AudioStreamPlayer = $HitWallStreamPlayer
 
 func _ready():
 	# Set up physics properties
@@ -49,3 +50,6 @@ func _physics_process(delta):
 			# Optional: Add a random "kick" on collision
 			var random_kick = Vector2(randf_range(-100, 100), randf_range(-100, 100))
 			apply_central_impulse(random_kick)
+			
+			if not body.is_in_group("Box"):
+				hit_wall_stream_player.play()

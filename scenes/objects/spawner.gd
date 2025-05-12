@@ -1,6 +1,7 @@
 extends Area2D
 
 @export var scenes: Array[PackedScene] # Array of scenes
+@onready var sweep_stream_player: AudioStreamPlayer = $SweepStreamPlayer
 
 var blink_timer: Timer
 var is_visible_state: bool = true
@@ -13,6 +14,7 @@ func _ready() -> void:
 	blink_timer.wait_time = blink_speed
 	blink_timer.timeout.connect(_on_blink_timer_timeout)
 	blink_timer.start()
+	sweep_stream_player.play()
 
 func _on_blink_timer_timeout() -> void:
 	is_visible_state = !is_visible_state

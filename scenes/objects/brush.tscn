@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3enwiffuabpt"]
+[gd_scene load_steps=6 format=3 uid="uid://c3enwiffuabpt"]
 
 [ext_resource type="Texture2D" uid="uid://csq6d6lpbdt8e" path="res://images/brush.png" id="1_qmkok"]
-[ext_resource type="Script" path="res://scenes/objects/brush.gd" id="1_v4dm5"]
+[ext_resource type="Script" uid="uid://dc1p6a84oihvt" path="res://scenes/objects/brush.gd" id="1_v4dm5"]
+[ext_resource type="AudioStream" uid="uid://ckiq6no2ay4qu" path="res://sounds/collect-5930.mp3" id="3_dnnfg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_quj0b"]
 size = Vector2(53.8961, 21)
@@ -31,5 +32,9 @@ shape = SubResource("CircleShape2D_n3vl5")
 wait_time = 3.0
 one_shot = true
 autostart = true
+
+[node name="CollectStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_dnnfg")
+volume_db = -2.811
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

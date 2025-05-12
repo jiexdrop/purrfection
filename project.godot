@@ -11,14 +11,24 @@ config_version=5
 [application]
 
 config/name="Purrfection"
-run/main_scene="res://scenes/init.tscn"
-config/features=PackedStringArray("4.3", "GL Compatibility")
+run/main_scene="res://scenes/levels/level_tiktok.tscn"
+config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Global="*res://scripts/global.gd"
 SignalBus="*res://scripts/signal_bus.gd"
+
+[display]
+
+window/size/viewport_width=540
+window/size/viewport_height=960
+window/size/resizable=false
+
+[editor]
+
+movie_writer/movie_file="C:/Users/ideapad/Videos/Tiktok/purrfection4.avi"
 
 [global_group]
 
@@ -30,4 +40,4 @@ Character=""
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-environment/defaults/default_clear_color=Color(0.545098, 0.368627, 0.235294, 1)
+environment/defaults/default_clear_color=Color(0.914269, 0.608597, 0.372069, 1)

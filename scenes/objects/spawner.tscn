@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cy6ogc0ywpnga"]
+[gd_scene load_steps=8 format=3 uid="uid://cy6ogc0ywpnga"]
 
 [ext_resource type="Texture2D" uid="uid://dl8snv0dgnpkn" path="res://images/paw.png" id="1_kflxp"]
-[ext_resource type="Script" path="res://scenes/objects/spawner.gd" id="1_p4y4s"]
+[ext_resource type="Script" uid="uid://bk7fua8a25ch5" path="res://scenes/objects/spawner.gd" id="1_p4y4s"]
 [ext_resource type="PackedScene" uid="uid://c3enwiffuabpt" path="res://scenes/objects/brush.tscn" id="2_k886r"]
 [ext_resource type="PackedScene" uid="uid://bxhe1vfxcatpw" path="res://scenes/objects/box.tscn" id="2_w8bmo"]
 [ext_resource type="PackedScene" uid="uid://c7aj8dbkfqvg" path="res://scenes/objects/bomb.tscn" id="4_28otk"]
+[ext_resource type="AudioStream" uid="uid://csb5cy2hqnfs3" path="res://sounds/broom-sweep.mp3" id="6_7xnw8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qfjd5"]
 size = Vector2(140, 140)
@@ -23,6 +24,9 @@ shape = SubResource("RectangleShape2D_qfjd5")
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 autostart = true
+
+[node name="SweepStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_7xnw8")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

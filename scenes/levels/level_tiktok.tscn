@@ -1,20 +1,22 @@
-[gd_scene load_steps=22 format=3 uid="uid://cy5unw0mdkpq3"]
+[gd_scene load_steps=25 format=3 uid="uid://pd1lit5m276h"]
 
-[ext_resource type="Script" uid="uid://comy4uymvr60r" path="res://scenes/levels/level_1.gd" id="1_rhja8"]
-[ext_resource type="Script" uid="uid://drtqa8066j46i" path="res://scenes/levels/character.gd" id="2_aewes"]
-[ext_resource type="Texture2D" uid="uid://bjmlh6tdk3u8c" path="res://images/cat.png" id="3_s3vdj"]
-[ext_resource type="Texture2D" uid="uid://dl8snv0dgnpkn" path="res://images/paw.png" id="4_6tub0"]
-[ext_resource type="PackedScene" uid="uid://b5r10kabyuywv" path="res://scenes/objects/ball.tscn" id="4_bobhk"]
-[ext_resource type="PackedScene" uid="uid://cy6ogc0ywpnga" path="res://scenes/objects/spawner.tscn" id="4_p52dg"]
-[ext_resource type="Texture2D" uid="uid://c74flbvepf2h" path="res://images/knot_p.png" id="7_871mw"]
-[ext_resource type="Texture2D" uid="uid://cdkmjfnp2sjnx" path="res://images/bar_r.png" id="8_7j67v"]
-[ext_resource type="Script" uid="uid://bq0kixfaty5x1" path="res://scenes/levels/brush_value_label.gd" id="8_tagk2"]
-[ext_resource type="Texture2D" uid="uid://dyhwtwkiafim4" path="res://images/bar_r_o.png" id="10_bjasr"]
-[ext_resource type="Texture2D" uid="uid://bb31dp7t2xwn2" path="res://images/bar_r_p.png" id="10_ks0c5"]
-[ext_resource type="Script" uid="uid://qr4e3qa6478y" path="res://scenes/objects/thermometer.gd" id="11_m5gww"]
-[ext_resource type="Texture2D" uid="uid://bbisa8qo3jwwb" path="res://images/bar_w.png" id="12_0vdrg"]
-[ext_resource type="Texture2D" uid="uid://ces46sxi6qxpg" path="res://images/bar_w_o.png" id="13_e6pml"]
-[ext_resource type="Texture2D" uid="uid://cqqrdamqj1t2l" path="res://images/bar_w_p.png" id="13_m6dc6"]
+[ext_resource type="Script" uid="uid://comy4uymvr60r" path="res://scenes/levels/level_1.gd" id="1_mlnfk"]
+[ext_resource type="PackedScene" uid="uid://cy6ogc0ywpnga" path="res://scenes/objects/spawner.tscn" id="2_m0ve6"]
+[ext_resource type="Texture2D" uid="uid://dl8snv0dgnpkn" path="res://images/paw.png" id="3_j07xe"]
+[ext_resource type="PackedScene" uid="uid://b5r10kabyuywv" path="res://scenes/objects/ball.tscn" id="4_v3r63"]
+[ext_resource type="Script" uid="uid://drtqa8066j46i" path="res://scenes/levels/character.gd" id="5_eitux"]
+[ext_resource type="Texture2D" uid="uid://bjmlh6tdk3u8c" path="res://images/cat.png" id="6_mu05p"]
+[ext_resource type="Texture2D" uid="uid://c74flbvepf2h" path="res://images/knot_p.png" id="7_vf6p7"]
+[ext_resource type="Script" uid="uid://bq0kixfaty5x1" path="res://scenes/levels/brush_value_label.gd" id="8_k7l58"]
+[ext_resource type="Texture2D" uid="uid://cdkmjfnp2sjnx" path="res://images/bar_r.png" id="9_erg5x"]
+[ext_resource type="Texture2D" uid="uid://dyhwtwkiafim4" path="res://images/bar_r_o.png" id="10_1rkqg"]
+[ext_resource type="Texture2D" uid="uid://bb31dp7t2xwn2" path="res://images/bar_r_p.png" id="11_05jab"]
+[ext_resource type="Script" uid="uid://qr4e3qa6478y" path="res://scenes/objects/thermometer.gd" id="12_ng4g5"]
+[ext_resource type="Texture2D" uid="uid://bbisa8qo3jwwb" path="res://images/bar_w.png" id="13_hmnwd"]
+[ext_resource type="Texture2D" uid="uid://ces46sxi6qxpg" path="res://images/bar_w_o.png" id="14_vdvdr"]
+[ext_resource type="Texture2D" uid="uid://cqqrdamqj1t2l" path="res://images/bar_w_p.png" id="15_33i2v"]
+[ext_resource type="PackedScene" uid="uid://c7aj8dbkfqvg" path="res://scenes/objects/bomb.tscn" id="16_t3aye"]
+[ext_resource type="PackedScene" uid="uid://bxhe1vfxcatpw" path="res://scenes/objects/box.tscn" id="17_wnvtk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qfjd5"]
 size = Vector2(140, 140)
@@ -25,39 +27,42 @@ radius = 52.0096
 [sub_resource type="CircleShape2D" id="CircleShape2D_c427v"]
 radius = 34.0588
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_w8ldn"]
-size = Vector2(1430, 350)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xndka"]
+size = Vector2(1152, 350)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uyxs8"]
-size = Vector2(255, 685.563)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nybmn"]
+size = Vector2(1162.5, 350)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sbmtq"]
-size = Vector2(328, 685.563)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q82xv"]
+size = Vector2(295, 964)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c6x0t"]
+size = Vector2(317, 967.948)
 
 [node name="Level1" type="Node2D"]
-script = ExtResource("1_rhja8")
-spawner_scene = ExtResource("4_p52dg")
+script = ExtResource("1_mlnfk")
+spawner_scene = ExtResource("2_m0ve6")
 spawn_width = 984.0
 
 [node name="Paw" type="Area2D" parent="."]
 position = Vector2(1065, -120)
 
 [node name="Sprite2D" type="Sprite2D" parent="Paw"]
-texture = ExtResource("4_6tub0")
+texture = ExtResource("3_j07xe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Paw"]
 position = Vector2(6, -1)
 shape = SubResource("RectangleShape2D_qfjd5")
 
-[node name="Ball" parent="." instance=ExtResource("4_bobhk")]
-position = Vector2(737, 343)
+[node name="Ball" parent="." instance=ExtResource("4_v3r63")]
+position = Vector2(287, 405)
 
 [node name="Character" type="RigidBody2D" parent="." groups=["Character"]]
-position = Vector2(549, 278)
-script = ExtResource("2_aewes")
+position = Vector2(275, 204)
+script = ExtResource("5_eitux")
 
 [node name="Cat" type="Sprite2D" parent="Character"]
-texture = ExtResource("3_s3vdj")
+texture = ExtResource("6_mu05p")
 
 [node name="PawTimer" type="Timer" parent="Character"]
 
@@ -73,22 +78,23 @@ shape = SubResource("CircleShape2D_c427v")
 position = Vector2(201, -49)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(390, -128)
-shape = SubResource("RectangleShape2D_w8ldn")
+position = Vector2(81, -130)
+shape = SubResource("RectangleShape2D_xndka")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(390, 874)
-shape = SubResource("RectangleShape2D_w8ldn")
+position = Vector2(85.75, 1185)
+shape = SubResource("RectangleShape2D_nybmn")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-329.5, 372)
-shape = SubResource("RectangleShape2D_uyxs8")
+position = Vector2(-349.5, 528)
+shape = SubResource("RectangleShape2D_q82xv")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(948, 376)
-shape = SubResource("RectangleShape2D_sbmtq")
+position = Vector2(502, 523.974)
+shape = SubResource("RectangleShape2D_c6x0t")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Panel" type="Panel" parent="CanvasLayer"]
 custom_minimum_size = Vector2(168, 0)
@@ -122,7 +128,7 @@ alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel/Control/MarginContainer/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("7_871mw")
+texture = ExtResource("7_vf6p7")
 expand_mode = 3
 
 [node name="BrushValueLabel" type="Label" parent="CanvasLayer/Panel/Control/MarginContainer/HBoxContainer"]
@@ -132,7 +138,7 @@ theme_override_font_sizes/font_size = 40
 text = "0
 "
 horizontal_alignment = 1
-script = ExtResource("8_tagk2")
+script = ExtResource("8_k7l58")
 
 [node name="Control" type="Control" parent="CanvasLayer/Panel/Control"]
 layout_mode = 1
@@ -160,10 +166,10 @@ size_flags_vertical = 4
 allow_greater = true
 allow_lesser = true
 fill_mode = 3
-texture_under = ExtResource("8_7j67v")
-texture_over = ExtResource("10_bjasr")
-texture_progress = ExtResource("10_ks0c5")
-script = ExtResource("11_m5gww")
+texture_under = ExtResource("9_erg5x")
+texture_over = ExtResource("10_1rkqg")
+texture_progress = ExtResource("11_05jab")
+script = ExtResource("12_ng4g5")
 right = true
 
 [node name="Thermometer_W" type="TextureProgressBar" parent="CanvasLayer/Panel/Control/Control/VBoxContainer"]
@@ -172,9 +178,18 @@ layout_mode = 2
 allow_greater = true
 allow_lesser = true
 fill_mode = 2
-texture_under = ExtResource("12_0vdrg")
-texture_over = ExtResource("13_e6pml")
-texture_progress = ExtResource("13_m6dc6")
-script = ExtResource("11_m5gww")
+texture_under = ExtResource("13_hmnwd")
+texture_over = ExtResource("14_vdvdr")
+texture_progress = ExtResource("15_33i2v")
+script = ExtResource("12_ng4g5")
+
+[node name="Bomb" parent="." instance=ExtResource("16_t3aye")]
+position = Vector2(258, 820)
+
+[node name="Box" parent="." instance=ExtResource("17_wnvtk")]
+position = Vector2(199, 596)
+
+[node name="Box2" parent="." instance=ExtResource("17_wnvtk")]
+position = Vector2(357, 592)
 
 [connection signal="timeout" from="Character/PawTimer" to="Character" method="_on_paw_timer_timeout"]

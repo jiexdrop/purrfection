@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c7aj8dbkfqvg"]
+[gd_scene load_steps=6 format=3 uid="uid://c7aj8dbkfqvg"]
 
-[ext_resource type="Script" path="res://scenes/objects/bomb.gd" id="1_lhdnr"]
+[ext_resource type="Script" uid="uid://upij7oabmvev" path="res://scenes/objects/bomb.gd" id="1_lhdnr"]
 [ext_resource type="Texture2D" uid="uid://bslb2n1uxpcm6" path="res://images/bomb.png" id="2_0r25u"]
 [ext_resource type="PackedScene" uid="uid://cqqaj5q63707" path="res://scenes/objects/explosion.tscn" id="2_f0je3"]
+[ext_resource type="AudioStream" uid="uid://dq1184ab4gecq" path="res://sounds/explosion.mp3" id="4_rgcqv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n3vl5"]
 radius = 47.0425
@@ -20,3 +21,6 @@ texture = ExtResource("2_0r25u")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, 11)
 shape = SubResource("CircleShape2D_n3vl5")
+
+[node name="ExplosionStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_rgcqv")

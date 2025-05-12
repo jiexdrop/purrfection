@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cqqaj5q63707"]
 
-[ext_resource type="Script" path="res://scenes/objects/explosion.gd" id="1_ucq46"]
+[ext_resource type="Script" uid="uid://c14nu4houj8go" path="res://scenes/objects/explosion.gd" id="1_ucq46"]
 [ext_resource type="Texture2D" uid="uid://cmna25cicwdm5" path="res://images/explosion_ring.png" id="2_ggq7i"]
 
 [node name="Explosion" type="Node2D"]
