@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://dlwh357k2bn6h"]
+
+[ext_resource type="Script" uid="uid://c8jv6logdyx4c" path="res://scenes/objects/hammer.gd" id="1_w7wfr"]
+[ext_resource type="Texture2D" uid="uid://csiki55p5uen3" path="res://images/hammer.png" id="1_wu1d8"]
+[ext_resource type="AudioStream" uid="uid://c7l252dhl72go" path="res://sounds/hammer.mp3" id="3_eyduc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qfjd5"]
+size = Vector2(21.5, 140)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w7wfr"]
+size = Vector2(71.8259, 19.5384)
+
+[node name="Hammer" type="RigidBody2D" groups=["Hammer"]]
+gravity_scale = 0.0
+script = ExtResource("1_w7wfr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_wu1d8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-13, -1)
+rotation = 0.74708
+shape = SubResource("RectangleShape2D_qfjd5")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(28, -50)
+rotation = 0.74708
+shape = SubResource("RectangleShape2D_w7wfr")
+
+[node name="HammerStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_eyduc")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

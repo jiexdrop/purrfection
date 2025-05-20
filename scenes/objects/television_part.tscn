@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://d4icv6837b7hc"]
+
+[ext_resource type="Script" uid="uid://bgx0ofnnthapb" path="res://scenes/objects/television_part.gd" id="1_8xcxk"]
+[ext_resource type="Texture2D" uid="uid://wdh7pcq1clt1" path="res://images/tv_break_left.png" id="1_d75jh"]
+[ext_resource type="AudioStream" uid="uid://b5e5jgwuqacj6" path="res://sounds/glass.mp3" id="2_8xcxk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qfjd5"]
+size = Vector2(84, 127)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_odiui"]
+size = Vector2(37, 16.5)
+
+[node name="TelevisionPart" type="RigidBody2D" groups=["Breakable"]]
+gravity_scale = 0.0
+script = ExtResource("1_8xcxk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_d75jh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, -10.5)
+shape = SubResource("RectangleShape2D_qfjd5")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(24.5, 61.25)
+shape = SubResource("RectangleShape2D_odiui")
+
+[node name="BreakStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_8xcxk")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

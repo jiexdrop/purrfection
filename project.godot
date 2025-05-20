@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Purrfection"
-run/main_scene="res://scenes/levels/level_tiktok.tscn"
+run/main_scene="uid://c1bryr22rq0e6"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -22,22 +22,22 @@ SignalBus="*res://scripts/signal_bus.gd"
 
 [display]
 
-window/size/viewport_width=540
-window/size/viewport_height=960
 window/size/resizable=false
 
 [editor]
 
-movie_writer/movie_file="C:/Users/ideapad/Videos/Tiktok/purrfection4.avi"
+movie_writer/movie_file="C:/Users/ideapad/Videos/Tiktok/purrfection19.avi"
 
 [global_group]
 
 Ball=""
-Box=""
 Character=""
+Hammer=""
+Walls=""
+Breakable=""
 
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-environment/defaults/default_clear_color=Color(0.914269, 0.608597, 0.372069, 1)
+environment/defaults/default_clear_color=Color(0.496431, 0.548521, 0.279457, 1)

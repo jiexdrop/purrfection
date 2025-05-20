@@ -71,14 +71,10 @@ func spawn_break_pieces():
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("Ball"):
 		hit_stream_player.play()
-	if body.is_in_group("Ball") and can_hit:
+	if body.is_in_group("Ball") or body.is_in_group("Hammer") and can_hit:
 		can_hit = false
 		hits += 1
 		hit_timer.start()
-		
-		if Global.collected_brushes > 0 and right == false:
-			right = true
-			Global.collected_brushes -= 1
 			
 		if hits >= 1:
 			kill(0)
@@ -102,10 +98,8 @@ func kill(hits):
 	break_stream_player.play()
 	
 	self.hits += hits
-	if right:
-		SignalBus.score.emit(5, -5)
-	else:
-		SignalBus.score.emit(-5, 5)
+
+	SignalBus.score.emit(500)
 	
 	# Spawn break pieces and hide original sprite
 	spawn_break_pieces()

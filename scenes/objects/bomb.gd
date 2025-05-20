@@ -4,21 +4,46 @@ extends RigidBody2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @export var explosion_radius: float = 150.0
 @export var explosion_force: float = 500.0
-@export var explosion_effect_scene: PackedScene  
+@export var explosion_effect_scene: PackedScene
+@export var bounce_force: float = 200.0  # Force applied when bouncing off walls
 
 func _ready() -> void:
 	contact_monitor = true
 	max_contacts_reported = 2
 	Global.bombs += 1
 	explosion_stream_player.finished.connect(_on_explosion_finished)
+	
+	# Set physics material for bouncing
+	var physics_material = PhysicsMaterial.new()
+	physics_material.bounce = 0.8  # Bounciness factor (0.0 to 1.0)
+	physics_material.friction = 0.1  # Lower friction for better sliding
+	physics_material_override = physics_material
 
 func _physics_process(_delta: float) -> void:
 	var colliding_bodies = get_colliding_bodies()
 	if colliding_bodies.size() > 0:
 		for body in colliding_bodies:
-			if body.is_in_group("Box"):
+			if body.is_in_group("Breakable"):
 				explode()
 				break
+			elif body.is_in_group("Wall"):
+				# Apply bounce effect when hitting walls
+				handle_wall_bounce(body)
+
+func handle_wall_bounce(wall_body) -> void:
+	# Calculate reflection direction
+	var collision_normal = (global_position - wall_body.global_position).normalized()
+	var current_velocity = linear_velocity
+	
+	# Reflect velocity based on collision normal
+	var reflected_velocity = current_velocity.reflect(collision_normal)
+	
+	# Apply the reflected velocity with additional bounce force
+	linear_velocity = reflected_velocity * 1.1  # Slight speed boost
+	apply_central_impulse(collision_normal * bounce_force)
+	
+	# Optional: Add a small spin for visual effect
+	apply_torque_impulse(randf_range(-5000, 5000))
 
 func explode() -> void:
 	# Create explosion visual effect
@@ -41,7 +66,7 @@ func explode() -> void:
 	# Apply explosion forces
 	for result in results:
 		var body = result["collider"]
-		if body != self and body.is_in_group("Box") and body is RigidBody2D:
+		if body != self and body.is_in_group("Breakable") and body is RigidBody2D:
 			apply_explosion_force(body)
 			# Optional: Add destruction animation for boxes
 			body.kill(4)

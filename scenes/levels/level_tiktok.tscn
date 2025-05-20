@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://pd1lit5m276h"]
+[gd_scene load_steps=17 format=3 uid="uid://pd1lit5m276h"]
 
 [ext_resource type="Script" uid="uid://comy4uymvr60r" path="res://scenes/levels/level_1.gd" id="1_mlnfk"]
 [ext_resource type="PackedScene" uid="uid://cy6ogc0ywpnga" path="res://scenes/objects/spawner.tscn" id="2_m0ve6"]
@@ -8,18 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://bjmlh6tdk3u8c" path="res://images/cat.png" id="6_mu05p"]
 [ext_resource type="Texture2D" uid="uid://c74flbvepf2h" path="res://images/knot_p.png" id="7_vf6p7"]
 [ext_resource type="Script" uid="uid://bq0kixfaty5x1" path="res://scenes/levels/brush_value_label.gd" id="8_k7l58"]
-[ext_resource type="Texture2D" uid="uid://cdkmjfnp2sjnx" path="res://images/bar_r.png" id="9_erg5x"]
-[ext_resource type="Texture2D" uid="uid://dyhwtwkiafim4" path="res://images/bar_r_o.png" id="10_1rkqg"]
-[ext_resource type="Texture2D" uid="uid://bb31dp7t2xwn2" path="res://images/bar_r_p.png" id="11_05jab"]
-[ext_resource type="Script" uid="uid://qr4e3qa6478y" path="res://scenes/objects/thermometer.gd" id="12_ng4g5"]
-[ext_resource type="Texture2D" uid="uid://bbisa8qo3jwwb" path="res://images/bar_w.png" id="13_hmnwd"]
-[ext_resource type="Texture2D" uid="uid://ces46sxi6qxpg" path="res://images/bar_w_o.png" id="14_vdvdr"]
-[ext_resource type="Texture2D" uid="uid://cqqrdamqj1t2l" path="res://images/bar_w_p.png" id="15_33i2v"]
-[ext_resource type="PackedScene" uid="uid://c7aj8dbkfqvg" path="res://scenes/objects/bomb.tscn" id="16_t3aye"]
-[ext_resource type="PackedScene" uid="uid://bxhe1vfxcatpw" path="res://scenes/objects/box.tscn" id="17_wnvtk"]
+[ext_resource type="PackedScene" uid="uid://dlwh357k2bn6h" path="res://scenes/objects/hammer.tscn" id="17_ngoci"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qfjd5"]
-size = Vector2(140, 140)
+size = Vector2(21.5, 140)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cc8xd"]
 radius = 52.0096
@@ -54,11 +46,8 @@ texture = ExtResource("3_j07xe")
 position = Vector2(6, -1)
 shape = SubResource("RectangleShape2D_qfjd5")
 
-[node name="Ball" parent="." instance=ExtResource("4_v3r63")]
-position = Vector2(287, 405)
-
 [node name="Character" type="RigidBody2D" parent="." groups=["Character"]]
-position = Vector2(275, 204)
+position = Vector2(277, 246)
 script = ExtResource("5_eitux")
 
 [node name="Cat" type="Sprite2D" parent="Character"]
@@ -74,7 +63,7 @@ shape = SubResource("CircleShape2D_cc8xd")
 position = Vector2(31, -20)
 shape = SubResource("CircleShape2D_c427v")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["Walls"]]
 position = Vector2(201, -49)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
@@ -166,11 +155,6 @@ size_flags_vertical = 4
 allow_greater = true
 allow_lesser = true
 fill_mode = 3
-texture_under = ExtResource("9_erg5x")
-texture_over = ExtResource("10_1rkqg")
-texture_progress = ExtResource("11_05jab")
-script = ExtResource("12_ng4g5")
-right = true
 
 [node name="Thermometer_W" type="TextureProgressBar" parent="CanvasLayer/Panel/Control/Control/VBoxContainer"]
 clip_contents = true
@@ -178,18 +162,11 @@ layout_mode = 2
 allow_greater = true
 allow_lesser = true
 fill_mode = 2
-texture_under = ExtResource("13_hmnwd")
-texture_over = ExtResource("14_vdvdr")
-texture_progress = ExtResource("15_33i2v")
-script = ExtResource("12_ng4g5")
 
-[node name="Bomb" parent="." instance=ExtResource("16_t3aye")]
-position = Vector2(258, 820)
+[node name="Ball" parent="." instance=ExtResource("4_v3r63")]
+position = Vector2(267, 810)
 
-[node name="Box" parent="." instance=ExtResource("17_wnvtk")]
-position = Vector2(199, 596)
-
-[node name="Box2" parent="." instance=ExtResource("17_wnvtk")]
-position = Vector2(357, 592)
+[node name="Hammer" parent="." instance=ExtResource("17_ngoci")]
+position = Vector2(273, 553)
 
 [connection signal="timeout" from="Character/PawTimer" to="Character" method="_on_paw_timer_timeout"]

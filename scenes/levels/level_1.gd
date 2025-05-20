@@ -23,6 +23,8 @@ func _ready():
 	SignalBus.win.connect(next_level)
 
 func _process(delta):
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().quit()
 	spawn_timer += delta
 	if spawn_timer >= spawn_interval:
 		spawn_random_box()

@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qfjd5"]
 size = Vector2(127, 108)
 
-[node name="Box" type="RigidBody2D" groups=["Box"]]
+[node name="Box" type="RigidBody2D" groups=["Breakable"]]
 mass = 10.0
 gravity_scale = 0.0
 script = ExtResource("1_v8o5c")

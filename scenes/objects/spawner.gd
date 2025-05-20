@@ -28,11 +28,11 @@ func _on_timer_timeout() -> void:
 	if scenes.is_empty():
 		return
 	
-	var weights = [0.50, 0.40, 0.05]  # Adjust probabilities
-	#var weights = [0.50, 0.0, 0.50] # Bombs
+	var weights = [0.20, 0.20, 0.20, 0.20, 0.20]  # Adjust probabilities
+	#var weights = [0.50, 0.0, 0.50] # Plop
 	var index = weighted_random_index(weights)
 	if Global.boxes >= 3:
-		weights = [0.15, 0.25, 0.5]  # Adjust probabilities
+		weights = [0.15, 0.25, 0.5, 0.15, 0.10]  # Adjust probabilities
 	if Global.bombs >= 2:
 		index = 0
 	if spawn:
@@ -40,7 +40,13 @@ func _on_timer_timeout() -> void:
 	queue_free()
 
 func weighted_random_index(weights: Array) -> int:
-	var r = randf()
+	# Calculate sum of all weights
+	var sum = 0.0
+	for weight in weights:
+		sum += weight
+	
+	# Generate random value between 0 and sum
+	var r = randf() * sum
 	var cumulative = 0.0
 	
 	for i in range(weights.size()):

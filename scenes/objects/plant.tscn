@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://dq7j3m1m2hws"]
+
+[ext_resource type="Script" uid="uid://c6hd7ftyfp3dv" path="res://scenes/objects/plant.gd" id="1_7bmar"]
+[ext_resource type="Texture2D" uid="uid://houmwpc32y4" path="res://images/plant.png" id="2_7bmar"]
+[ext_resource type="AudioStream" uid="uid://ckplwwrei722w" path="res://sounds/vase_break.mp3" id="3_7bmar"]
+[ext_resource type="AudioStream" uid="uid://dtwqy3vxxafty" path="res://sounds/leaves.mp3" id="4_0a33w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qfjd5"]
+size = Vector2(82, 140)
+
+[node name="Plant" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_7bmar")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_7bmar")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -1)
+shape = SubResource("RectangleShape2D_qfjd5")
+
+[node name="BreakStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_7bmar")
+
+[node name="LeavesStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_0a33w")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

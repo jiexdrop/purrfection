@@ -51,5 +51,5 @@ func _physics_process(delta):
 			var random_kick = Vector2(randf_range(-100, 100), randf_range(-100, 100))
 			apply_central_impulse(random_kick)
 			
-			if not body.is_in_group("Box"):
+			if not body.is_in_group("Box") and not hit_wall_stream_player.playing:
 				hit_wall_stream_player.play()
